@@ -22,29 +22,66 @@ drawings:
 # use UnoCSS (experimental)
 css: unocss
 ---
+# Guia da Streamer Soberana
+## Fabricio C Zuardi
+### São Paulo, Agosto de 2022
 
-# Welcome to Slidev
+---
 
-Presentation slides for developers
+# Agenda
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+- Intro
+- Stream Próprio
+  - <span><carbon-bare-metal-server-02 />:</span> [Owncast][owncast]
+  - <span><carbon-laptop />:</span> [OBS Studio][obs]
+- Restream para outras plataformas
+  - <mdi-twitch /> Twitch, <mdi-youtube /> Youtube, etc
+  - <span><carbon-bare-metal-server-02 />:</span> [Nginx + mod rtmp][modrtmp]
+  - <span><carbon-laptop />:</span> OBS Studio
+- Discussão
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+[owncast]: https://owncast.online/
+[obs]: https://obsproject.com/
+[modrtmp]: https://github.com/arut/nginx-rtmp-module
+
+---
+
+# Referencias:
+
+- https://blog.twitch.tv/en/2017/10/10/live-video-transmuxing-transcoding-f-fmpeg-vs-twitch-transcoder-part-i-489c1c125f28/
+
+---
+
+# Servidor de Stream, próprio.
+
+- **<span><carbon-bare-metal-server-02 />:</span> Linux conectado à Internet**
+  - Instalação e configuração do Owncast
+    - <span><mdi-web /></span> http: player, chat, interface admnistrativa
+    - <span><mdi-broadcast /></span> [rtmp][rtmp]: recebimento do stream e transmissão pública
+  - Configuração de um endereço mais fácil
+    - DuckDNS.org
+  - <span><mdi-tor /></span> Configuração de um endereço mais privado
+    - TOR Hidden Service
+- **<span><carbon-laptop />:</span> Máquina pessoal**
+  - Instalação e configuração do OBS Studio
+    - <mdi-cast /> rtmp: stream para o servidor
+
+[rtmp]: https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol
+
+---
+
+# Parte II: Re-stream
+
+```
+sudo apt update
+sudo apt install libnginx-mod-rtmp
+```
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+
+p/ pegar a chave da Twitch: https://dashboard.twitch.tv/u/sedentarismo/settings/stream
+
+p/ pegar a chave do Youtube: https://studio.youtube.com/ e clica em "Go Live"
 -->
 
 ---
